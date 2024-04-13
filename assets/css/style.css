@@ -2,3 +2,60 @@
     width: 200px;
     height: 200px;
 }
+
+.img-spe{
+    width: 20px;
+    height: 20px;
+}
+
+@keyframes slideleft {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideright {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes slideup {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes slidedown {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(100%);
+    }
+}
+
+.animate__slideInLeft {
+    animation: slideleft 0.5s;
+}
+
+.animate__slideInRight {
+    animation: slideright 0.5s;
+}
+
+.animate__slideInUp {
+    animation: slideup 1.2s;
+}
+
+.animate__slideInDown {
+    animation: slidedown 1.2s;
+}
