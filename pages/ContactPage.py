@@ -1,15 +1,19 @@
 import theme
 from nicegui import ui
+from animationJs import slide_up
 
 def on_click(button_submit):
     ui.notify("Button clicked")
     button_submit.text = "Clicked"
-
+    
 def contactPage():
+    
     with theme.frame('Contact') as frame:
         ui.page_title('Contact Us')
+        #ici met moi une fonction qui appelle gsap
+        slide_up('.animate_slideInUp')
         with ui.row().classes(
-        "flex justify-center items-center w-full h-2/3 animate__slideInUp"
+        "flex justify-center items-center w-full h-2/3 animate_slideInUp"
         ):
             with ui.column().classes("bg-white w-1/2 p-4 shadow-lg") as col1:
                 welcomeLabel = ui.markdown("### Get in touch").classes(

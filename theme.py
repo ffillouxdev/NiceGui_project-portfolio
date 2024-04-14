@@ -1,5 +1,11 @@
 from contextlib import contextmanager
-from nicegui import ui
+from nicegui import ui, app
+
+
+app.add_static_files('/static', 'assets/')
+# Ajoute le fichier gsap.js comme fichier statique
+
+
 
 is_enabled = False
 current_page = "/"
@@ -35,85 +41,12 @@ def frame(navtitle: str):
     dark = ui.dark_mode()
     style = ui.add_head_html(
         """
-        <style>
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-            }
-            .card-plus {
-                background-color: white;
-                margin: 1rem;
-                padding: 1rem;
-            }
-            .card-plus img {
-                width: 100%;
-                height: auto;
-            }
-            @keyframes slideleft {
-                from {
-                    opacity: 0;
-                    transform: translateX(50%);
-                }
-                to {
-                    transform: translateX(0);
-                    opacity: 1;
-                }
-            }
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+        <script src="/static/js/gsap.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
 
-            @keyframes slideright {
-                from {
-                    opacity: 0;
-                    transform: translateX(-50%);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateX(0);
-                }
-            }
-            
-            
-            @keyframes slideup {
-                from {
-                    opacity: 0;
-                    transform: translateY(8%);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-
-            @keyframes slidedown {
-                from {
-                    opacity: 0;
-                    transform: translateY(0);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(-10%);
-                }
-            }
-
-            .animate__slideInLeft {
-                animation: slideleft 0.5s;
-            }
-
-            .animate__slideInRight {
-                animation: slideright 0.5s;
-            }
-            .animate__slideInRight1 {
-                animation: slideright 1.2s;
-            }
-            .animate__slideInUp {
-                animation: slideup 1.2s;
-            }
-
-            .animate__slideInDown {
-                animation: slidedown 1.2s;
-            }
-        </style>
-    """
+        """
     )
     
     #Create a welcome cookies dialog 
@@ -138,7 +71,7 @@ def frame(navtitle: str):
                 "text-lg font-bold no-underline hover:underline"
                 + (" text-red" if navtitle == "Homepage" else "")
             )
-            about = ui.link("About", "/About").classes(
+            about = ui.link("About", "/About/").classes(
                 "text-lg font-bold no-underline hover:underline"
                 + (" text-red" if navtitle == "About" else "")
             )
@@ -155,132 +88,9 @@ def frame(navtitle: str):
         "flex justify-center items-center w-full h-16 bg-gray-800 text-white fixed bottom-0"
     ) as footer:
         footerLabel = ui.label("© 2024 All rights reserved")
+        logo = ui.image(source="assets/logo.jpg").classes("w-6 h-6")
         with ui.row().classes("flex justify-center items-center w-full"):
             separator2 = ui.separator().classes("w-1/3 bg-white")
     yield
-
     
-"""
-def set_style():
-    global is_enabled
-    # General styles
-    if is_enabled:
-        background = ui.query("body").style("background-color: black")
-        foreground = ui.query("a").classes("text-white")
-    else:
-        background = ui.query("body").style("background-color: lightblue")
-        foreground = ui.query("a").classes("text-white")
-
-    dark = ui.dark_mode()
-    style = ui.add_head_html(
-        <style>
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-            }
-            .card-plus {
-                background-color: white;
-                margin: 1rem;
-                padding: 1rem;
-            }
-            .card-plus img {
-                width: 100%;
-                height: auto;
-            }
-            @keyframes slideleft {
-                from {
-                    opacity: 0;
-                    transform: translateX(50%);
-                }
-                to {
-                    transform: translateX(0);
-                    opacity: 1;
-                }
-            }
-
-            @keyframes slideright {
-                from {
-                    opacity: 0;
-                    transform: translateX(-50%);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateX(0);
-                }
-            }
-            
-            
-            @keyframes slideup {
-                from {
-                    opacity: 0;
-                    transform: translateY(8%);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-
-            @keyframes slidedown {
-                from {
-                    opacity: 0;
-                    transform: translateY(0);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(-10%);
-                }
-            }
-
-            .animate__slideInLeft {
-                animation: slideleft 0.5s;
-            }
-
-            .animate__slideInRight {
-                animation: slideright 0.5s;
-            }
-            .animate__slideInRight1 {
-                animation: slideright 1.2s;
-            }
-            .animate__slideInUp {
-                animation: slideup 1.2s;
-            }
-
-            .animate__slideInDown {
-                animation: slidedown 1.2s;
-            }
-        </style>
-    )
-
-
-def create_navbar(navtitle: str):
-    with ui.header().classes(
-        "flex justify-between items-center transparent no-shadow"
-    ) as tabs:
-        with ui.row().classes("flex justify-center items-center w-full"):
-            home = ui.link("Home", "/").classes(
-                "text-lg font-bold no-underline hover:underline"
-                + (" text-red" if navtitle == "/" else "")
-            )
-            about = ui.link("About", "/About").classes(
-                "text-lg font-bold no-underline hover:underline"
-                + (" text-red" if navtitle == "/About" else "")
-            )
-            contact = ui.link("Contact", "/Contact").classes(
-                "text-lg font-bold no-underline hover:underline"
-                + (" text-red" if navtitle == "/Contact" else "")
-            )
-            dark_button1 = ui.button("Dark", on_click=dark_mode)
-        with ui.row().classes("flex justify-center items-center w-full"):
-            separator1 = ui.separator().classes("w-1/3 bg-white")
-
-
-def create_footer():
-    with ui.footer().classes(
-        "flex justify-center items-center w-full h-16 bg-gray-800 text-white fixed bottom-0"
-    ) as footer:
-        footerLabel = ui.label("© 2024 All rights reserved")
-        with ui.row().classes("flex justify-center items-center w-full"):
-            separator2 = ui.separator().classes("w-1/3 bg-white")
-"""
+    

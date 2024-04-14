@@ -1,14 +1,19 @@
 from nicegui import ui
+from animationJs import slide_left, slide_right, all_gsap
 
 
 def content() -> None:
     ui.page_title("Home")
+    #ici met moi une fonction qui appelle gsap 
+    slide_left('.animate_slideInLeft')
+    slide_right('.animate_slideInRight')
+    all_gsap()
     with ui.row().classes(
         "flex justify-bottom items-left w-full h-screen"
     ) as first_section:
         ui.html(
             """
-                <div class="mt-8 animate__slideInRight1">
+                <div class="mt- animate_slideInRight title_section">
                     <h1 class="text-6xl font-bold text-white text-left pl-8 pt-8 pr-8">Welcome to my website</h1>
                     <p class="text-white text-left pl-9">This is a simple website created using nicegui !</p>
                 </div>
@@ -58,7 +63,7 @@ def content() -> None:
                             "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                         )
     with ui.row().classes(
-        "w-full h-2/3 bg-blue-500 text-white flex justify-center"
+        "w-full h-2/3 bg-blue-500 text-white flex justify-center section2"
     ) as second_section:
         with ui.column().classes(
             "bg-blue-500 w-full p-4 text-white text-center mb-10"
@@ -120,9 +125,9 @@ def content() -> None:
 
 
     with ui.row().classes(
-        "w-full h-screen text-white flex justify-center items-center bg-white"   
+        "w-full h-screen text-white flex justify-center items-center bg-white hover_section2"   
     ) as third_section:
-        with ui.row().classes("w-1/4 flex flex-row shadow-lg h-1/2 rounded-lg bg-blue-500 animate__slideInRight") as col1:
+        with ui.row().classes("w-1/4 flex flex-row shadow-lg h-1/2 rounded-lg bg-blue-500 animate_slideInRight el1") as col1:
             with ui.row() as row2:
                 with ui.column().classes("p-4") as col1:
                     ui.label("Why choose us").classes("text-2xl font-bold mb-2 w-full text-center")
@@ -131,6 +136,10 @@ def content() -> None:
                             incididunt ut labore et dolore magna aliqua
                             """).classes("w-full text-mg")
                     ui.label("""lorem ipsum dolor sit amet, consectetur sit amet, consectetur, elit, sed do eiusmod tempor""").classes("w-full text-mg")
-                    ui.button("Read More").classes("bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mx-auto")
-        with ui.row().classes("w-1/3 h-1/3 bg-white flex justify-center items-center animate__slideInLeft") as col2:
+                    ui.button("Read More", on_click=lambda: ui.navigate.to("/About/")).classes("bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mx-auto")
+        with ui.row().classes("w-1/3 h-1/3 bg-white flex justify-center items-center animate_slideInLeft el2") as col2:
             ui.image(source="assets/img3.png").classes("img-spe")
+        
+            
+            
+   
