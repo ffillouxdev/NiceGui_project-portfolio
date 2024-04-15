@@ -14,6 +14,30 @@ function slideDown(element) {
     gsap.from(element, { opacity: 0, y: "-10%", duration: 1.2 });
 }
 
+function setNavbarBlack() {
+    var navbar = document.querySelector('.navbar');
+    var navbarHr = document.querySelector('.navbar_hr');
+    var navbarA = document.querySelectorAll('.navbar a');
+    navbarA.forEach((a) => {
+        a.classList.remove('text-white');
+        a.classList.add('text-black');
+    });
+    navbar.classList.add('set_navbar_el_black');
+    navbarHr.classList.add('set_navbar_hr_black');   
+}
+
+function removeSetNavbarBlack() {
+    var navbar = document.querySelector('.navbar');
+    var navbarHr = document.querySelector('.navbar_hr');
+    var navbarA = document.querySelectorAll('.navbar a');
+    navbarA.forEach((a) => {
+        a.classList.remove('text-black');
+        a.classList.add('text-white');
+    });
+    navbar.classList.remove('set_navbar_el_black');
+    navbarHr.classList.remove('set_navbar_hr_black');
+}
+
 var animationsTriggered = false;
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -27,7 +51,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (!animationsTriggered) {
                         slideRight('.el1');
                         slideLeft('.el2');
+                        setNavbarBlack();
                         animationsTriggered = true;
+                    }
+                },
+                onLeaveBack: () => {
+                    if (animationsTriggered) {
+                        removeSetNavbarBlack();
+                        animationsTriggered = false;
                     }
                 }
             }
@@ -43,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
-    
+
     setTimeout(function() {
         gsap.to(".title_section", {
             y: 20, 
@@ -54,4 +85,3 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, 1000);
 });
-

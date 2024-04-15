@@ -6,16 +6,17 @@ def on_click(button_submit):
     ui.notify("Button clicked")
     button_submit.text = "Clicked"
     
-def contactPage():
+
     
+def contactPage():
+
     with theme.frame('Contact') as frame:
-        ui.page_title('Contact Us')
-        #ici met moi une fonction qui appelle gsap
+        ui.page_title('Contact Us')   
         slide_up('.animate_slideInUp')
         with ui.row().classes(
         "flex justify-center items-center w-full h-2/3 animate_slideInUp"
         ):
-            with ui.column().classes("bg-white w-1/2 p-4 shadow-lg") as col1:
+            with ui.column().classes("bg-white w-1/2 p-4 shadow-lg rounded-xl") as col1:
                 welcomeLabel = ui.markdown("### Get in touch").classes(
                     "text-lg font-semibold mx-auto"
                 )
@@ -34,10 +35,11 @@ def contactPage():
                 textarea_message = ui.textarea(label="Your Message").classes(
                     "w-full mb-4 px-4 py-2 focus:outline-none focus:border-green-500 resize-none h-32 rounded-lg"
                 )
-                button_submit = ui.button("Send Message", color="green").classes(
-                    "w-full px-4 py-2 bg-green-500 text-white hover:bg-green-600 focus:outline-none focus:bg-green-600 rounded-lg mx-auto"
+                button_submit = ui.button("Send Message", color="blue").classes(
+                    "w-full px-4 py-2 bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:bg-blue-600 rounded-lg mx-auto"
                 )
                 button_submit.on_click(lambda: on_click(button_submit))
+
 
             with ui.column().classes(
                 "bg-blue-400 w-1/3 h-1/2 p-8 shadow-lg text-white"
@@ -61,3 +63,12 @@ def contactPage():
                     locationLabel = ui.label("Loc : 123 Street, City, Country").classes(
                         "text-lg"
                     )
+
+
+#rajouter un ui.spinner dans une dialog pour faire patienter l'utilisateur avant le demarrage de la page et eviter les bugs avec gsap
+"""
+https://nicegui.io/documentation/section_data_elements
+https://nicegui.io/documentation/spinner
+https://nicegui.io/documentation/log
+https://nicegui.io/documentation/section_configuration_deployment#server_hosting
+"""

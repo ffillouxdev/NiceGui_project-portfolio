@@ -19,46 +19,48 @@ def content() -> None:
                 </div>
                 """
         ).classes("w-1/2 ml-8 mt-8")
-        with ui.column().classes() as container:
+        with ui.column().classes("col1_sec") as col1:
             with ui.column().classes("r") as box1:
                 with ui.card().tight().classes(
-                    "border rounded-lg shadow-md card-plus"
+                    "border rounded-lg shadow-md card-plus flex flex-col justify-center items-center"
                 ) as card1:
                     ui.image(source="assets/image1.png")
                     with ui.card_section():
                         ui.label("This is a card").classes("text-lg font-semibold")
-                    with ui.card_section():
+                    with ui.card_section().classes("mx-auto ml-5"):
                         ui.button("Click me").classes(
                             "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                         )
-            with ui.column().classes("") as box2:
+            with ui.column().classes("ml-4") as box2:
                 with ui.card().tight().classes(
-                    "border rounded-lg shadow-md card-plus"
+                    "border rounded-lg shadow-md card-plus flex flex-col justify-center items-center ml-4"
                 ) as card2:
                     ui.image(source="assets/image1.png")
                     with ui.card_section():
                         ui.label("This is a card").classes("text-lg font-semibold")
-                    with ui.card_section():
+                    with ui.card_section().classes(""):
                         ui.button("Click me").classes(
                             "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                         )
-        with ui.row().classes("") as row:
+        with ui.row().classes("col2_sec") as row:
             with ui.column().classes("") as box3:
                 with ui.card().tight().classes(
-                    "border rounded-lg shadow-md card-plus"
+                    "border rounded-lg shadow-md card-plus flex flex-col justify-center items-center"
                 ) as card3:
                     ui.image(source="assets/image1.png")
                     with ui.card_section():
                         ui.label("This is a card").classes("text-lg font-semibold")
-                    with ui.card_section():
-                        ui.button("Click me").classes("")
+                    with ui.card_section().classes():
+                        ui.button("Click me").classes(
+                            "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                        )
                 with ui.card().tight().classes(
-                    "border rounded-lg shadow-md card-plus"
+                    "border rounded-lg shadow-md card-plus flex flex-col justify-center items-center"
                 ) as card4:
                     ui.image(source="assets/image1.png")
                     with ui.card_section():
                         ui.label("This is a card").classes("text-lg font-semibold")
-                    with ui.card_section():
+                    with ui.card_section().classes():
                         ui.button("Click me").classes(
                             "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                         )
@@ -78,7 +80,7 @@ def content() -> None:
             with ui.column().classes("w-full flex justify-center items-center") as container:
                 with ui.row().classes("w-full flex justify-center items-center") as row:
                     with ui.card().tight().classes(
-                        "card-plus"
+                        "card-plus1"
                     ) as card1:
                             with ui.card_section():
                                 with ui.row().classes("") as row:
@@ -90,7 +92,7 @@ def content() -> None:
 
                     with ui.column().classes(""):
                        with ui.card().tight().classes(
-                        "card-plus"
+                        "card-plus1"
                         ) as card2:
                             with ui.card_section():
                                 with ui.row().classes("") as row:
@@ -102,7 +104,7 @@ def content() -> None:
 
                 with ui.row().classes(""):
                     with ui.card().tight().classes(
-                        "card-plus"
+                        "card-plus1"
                         ) as card3:
                             with ui.card_section():
                                 with ui.row().classes("") as row:
@@ -113,7 +115,7 @@ def content() -> None:
                                         ui.label("nicegui is a python web gui library").classes("text-gray-500")
                     with ui.column().classes(""):
                         with ui.card().tight().classes(
-                        "card-plus"
+                        "card-plus1"
                         ) as card4:
                             with ui.card_section():
                                 with ui.row().classes("") as row:
@@ -122,7 +124,6 @@ def content() -> None:
                                     with ui.column().classes(""):
                                         ui.label("Python").classes(" font-semibold text-black")
                                         ui.label("nicegui is a python web gui library").classes("text-gray-500")
-
 
     with ui.row().classes(
         "w-full h-screen text-white flex justify-center items-center bg-white hover_section2"   

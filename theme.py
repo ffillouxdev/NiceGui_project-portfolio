@@ -14,15 +14,18 @@ have_checked = False
 
 def dark_mode():
     global is_enabled
+    global current_page
     if not is_enabled:
         is_enabled = True
         print(is_enabled)
         background = ui.query("body").style("background-color: black")
+       
 
     else:
         is_enabled = False
         print(is_enabled)
         background = ui.query("body").style("background-color: lightblue")
+       
 
 @contextmanager
 def frame(navtitle: str):
@@ -30,6 +33,8 @@ def frame(navtitle: str):
     # Set style
     global is_enabled
     global have_checked
+    global current_page
+    current_page = navtitle
     # General styles
     if is_enabled:
         background = ui.query("body").style("background-color: black")
@@ -50,21 +55,21 @@ def frame(navtitle: str):
     )
     
     #Create a welcome cookies dialog 
-    if not have_checked:
+    """if not have_checked:
         with ui.dialog() as dialog:
             with ui.column().classes("text-blue-500 bg-white p-4 rounded-lg shadow-lg"):
                 ui.label("Welcome to our website!").classes("text-lg font-semibold mb-2 text-center w-full")
-                ui.html("""
+                ui.html("
                     <p class="text-black text-center">We use cookies to improve user experience on our website.</p>
                     <p class="text-black text-center">By clicking "Accept", you consent to the use of all cookies.</p>
-                """)
+                ")
                 ui.button("Accept", on_click=dialog.close).classes("mt-4 mx-auto bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:bg-blue-600")
                 have_checked = True
-            dialog.open()  
+            dialog.open()"""
     
     # Create navbar
     with ui.header().classes(
-        "flex justify-between items-center transparent no-shadow"
+        "flex justify-between items-center transparent no-shadow navbar"
     ) as tabs:
         with ui.row().classes("flex justify-center items-center w-full"):
             home = ui.link("Home", "/").classes(
@@ -81,7 +86,7 @@ def frame(navtitle: str):
             )
             dark_button1 = ui.button("Dark", on_click=dark_mode)
         with ui.row().classes("flex justify-center items-center w-full"):
-            separator1 = ui.separator().classes("w-1/3 bg-white")
+            separator1 = ui.separator().classes("w-1/3 bg-white navbar_hr")
 
     # Create footer
     with ui.footer().classes(
