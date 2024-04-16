@@ -1,0 +1,39 @@
+from nicegui import ui
+
+# Liste des éléments disponibles dans l'arbre
+elements = [
+    {'id': 'button', 'label': 'Bouton'},
+    {'id': 'label', 'label': 'Étiquette'},
+    {'id': 'input', 'label': 'Champ de saisie'},
+]
+
+# Arbre des éléments
+def element_selected(event):
+    selected_element = event.value
+    print(f"Élément sélectionné : {selected_element}")
+
+element_tree = ui.tree(elements, label_key='label', on_tick=element_selected)
+
+# Zone de conception
+design_area = ui.grid()
+
+# Fonction pour ajouter un élément à la zone de conception
+def add_element_to_design_area(element_id):
+    # Ajoutez ici la logique pour ajouter l'élément à la zone de conception
+    print(f"Élément ajouté à la zone de conception : {element_id}")
+
+# Fonction pour réagir au clic sur un élément de l'arbre et l'ajouter à la zone de conception
+def handle_element_selection(event):
+    if event.value:
+        add_element_to_design_area(event.value['id'])
+
+# Liaison de la fonction de réaction au clic sur un élément de l'arbre
+element_tree.on_tick(handle_element_selection)
+
+# Assemblage de l'écran
+ui.row(
+    ui.column(element_tree).classes('w-1/4'),
+    design_area.classes('w-3/4')
+)
+
+ui.run()
