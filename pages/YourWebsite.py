@@ -1,15 +1,44 @@
 from nicegui import ui
+from components.default_button import defaultBut1, defaultBut2
+from components.default_footer import defaultFoo1, defaultFoo2
+from components.default_navbar import defaultNav1, defaultNav2
+from components.media.defaut_size_picture import defaultImg1, defaultImg2
+from components.media.defaut_size_video import defaultVid1, defaultVid2
 import theme
 
 list_of_components = []
 
 
-def addComponent(component):
-    pass
+def setComponentOnScreen(component):
+    list_of_components.append(component)
+    if component is "button1":
+        defaultBut1()
+    elif component is "button2":
+        defaultBut2()
+    elif component is "footer1":
+        defaultFoo1()
+    elif component is "footer2":
+        defaultFoo2()
+    elif component is "navbar1":
+        defaultNav1()
+    elif component is "navbar2":
+        defaultNav2()
+    elif component is "img1":
+        defaultImg1()
+    elif component is "img2":
+        defaultImg2()
+    elif component is "img2":
+        defaultVid1()
+    elif component is "img2":
+        defaultVid1()
+    else:
+        with ui.dialog():
+            with ui.card():
+                ui.label("components doesn't exist.")
 
 
 def removeComponent(component):
-    pass
+    list_of_components.remove(component)
 
 
 def editComponent(component):
@@ -98,7 +127,7 @@ def yourWebsite():
                         {"id": "media", "children": [{"id": "video"}, {"id": "img"}]},
                     ],
                     label_key="id",
-                    tick_strategy="leaf",
+                    tick_strategy="leaf",   
                     on_tick=lambda e: ui.notify(e.value),
                 )
                 ui.button("page informations", color="none").classes(
