@@ -4,6 +4,7 @@ from animationJs import slide_left, slide_right, all_gsap
 
 def content() -> None:
     ui.page_title("Home")
+    ui.context.client.content.classes('p-0 gap-0')
     #ici met moi une fonction qui appelle gsap 
     slide_left('.animate_slideInLeft')
     slide_right('.animate_slideInRight')
@@ -29,7 +30,7 @@ def content() -> None:
                         ui.label("This is a card").classes("text-lg font-semibold")
                     with ui.card_section().classes("mx-auto ml-5"):
                         ui.button("Click me").classes(
-                            "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                            "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded usul"
                         )
             with ui.column().classes("ml-4") as box2:
                 with ui.card().tight().classes(

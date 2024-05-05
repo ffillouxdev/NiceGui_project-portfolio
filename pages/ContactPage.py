@@ -12,9 +12,10 @@ def contactPage():
 
     with theme.frame('Contact') as frame:
         ui.page_title('Contact Us')   
+        ui.context.client.content.classes('p-0 gap-0')
         slide_up('.animate_slideInUp')
         with ui.row().classes(
-        "flex justify-center items-center w-full h-2/3 animate_slideInUp"
+        "flex justify-center items-center w-full h-2/3 animate_slideInUp gap-0"
         ):
             with ui.column().classes("bg-white w-1/2 p-4 shadow-lg rounded-xl") as col1:
                 welcomeLabel = ui.markdown("### Get in touch").classes(

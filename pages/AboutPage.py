@@ -6,7 +6,7 @@ import asyncio
 def aboutPage():
     with theme.frame('About'):
         ui.page_title('About Us')
-        with ui.grid(columns=2).classes('w-full pl-8 first_section'):
+        with ui.grid(columns=2).classes('first_section'):
             with ui.column().classes('ml-8'):
                 ui.image(source='assets/about.png').classes('img1')  
             with ui.column().classes('w-2/3 p-4'):
