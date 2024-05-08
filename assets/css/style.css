@@ -4,7 +4,7 @@ body {
     width: 100%;
 }
 
-textarea{
+textarea {
     resize: none;
 
 }
@@ -17,7 +17,7 @@ textarea{
 .card-plus img {
     width: 100%;
     height: auto;
-    
+
 }
 
 .usul {
@@ -28,12 +28,12 @@ textarea{
     margin-left: -16px;
 }
 
-.col1_sec{
+.col1_sec {
     margin-left: 10%;
     margin-top: 3%;
 }
 
-.col2_sec{
+.col2_sec {
     margin-top: 3%;
 }
 
@@ -43,9 +43,9 @@ textarea{
     height: 500px;
 }
 
-.first_section{
+.first_section {
     margin-left: 7%;
-    margin-top: 6%; 
+    margin-top: 6%;
 }
 
 .card-plus1 {
@@ -54,19 +54,18 @@ textarea{
     padding: 1rem;
 }
 
-.set_navbar_el_black{
+.set_navbar_el_black {
     color: #000;
 }
 
-.set_navbar_hr_black{
+.set_navbar_hr_black {
     border-top: 1px solid #000;
 }
 
-.text-white1{
+.text-white1 {
     color: #fff;
 }
 
-.screen-section{
+.screen-section {
     padding-left: 80%;
 }
-

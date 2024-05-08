@@ -11,14 +11,14 @@ def on_click(button_submit):
 def contactPage():
 
     with theme.frame('Contact') as frame:
-        ui.page_title('Contact Us')   
+        ui.page_title('Contact Me')   
         ui.context.client.content.classes('p-0 gap-0')
         slide_up('.animate_slideInUp')
         with ui.row().classes(
         "flex justify-center items-center w-full h-2/3 animate_slideInUp gap-0"
         ):
             with ui.column().classes("bg-white w-1/2 p-4 shadow-lg rounded-xl") as col1:
-                welcomeLabel = ui.markdown("### Get in touch").classes(
+                welcomeLabel = ui.markdown("### Get in touch").classes( 
                     "text-lg font-semibold mx-auto"
                 )
                 separator = ui.separator().classes("w-2/3 bg-gray-800 mb-4 mx-auto")
@@ -45,7 +45,7 @@ def contactPage():
             with ui.column().classes(
                 "bg-blue-400 w-1/3 h-1/2 p-8 shadow-lg text-white"
             ) as col2:
-                contactLabel = ui.markdown("### Contact Us").classes(
+                contactLabel = ui.markdown("### Contact Me").classes(
                     "text-lg font-semibold mb-4"
                 )
                 separator = ui.separator().classes("w-2/3 bg-white mb-4")
@@ -64,6 +64,7 @@ def contactPage():
                     locationLabel = ui.label("Loc : 123 Street, City, Country").classes(
                         "text-lg"
                     )
+                    
 
 
 #rajouter un ui.spinner dans une dialog pour faire patienter l'utilisateur avant le demarrage de la page et eviter les bugs avec gsap
