@@ -37,3 +37,35 @@ ui.row(
 )
 
 ui.run()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+faire en sorte de rajouter des stats avec du webscraping de mon github, faire des graphiques
+faire l'envoie d'email

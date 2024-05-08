@@ -3,6 +3,7 @@ from nicegui import ui
 from animationJs import slide_up
 
 def on_click(button_submit):
+    
     ui.notify("Button clicked")
     button_submit.text = "Clicked"
     

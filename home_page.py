@@ -133,7 +133,7 @@ def content() -> None:
                                 ui.image(source="assets/logdm.webp").classes("w-1/2")
                                 with ui.card_section():
                                     ui.label("DouceMob'").classes(
-                                        "text-lg font-semibold text-center"
+                                        "text-lg font-semibold text-center w-[120px]"
                                     )
                                 with ui.card_section().classes(""):
                                     ui.button(
