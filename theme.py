@@ -1,5 +1,6 @@
 from contextlib import contextmanager
 from nicegui import ui, app
+from assets.style import setupStyle
 
 
 app.add_static_files('/static', 'assets/')
@@ -35,6 +36,7 @@ def frame(navtitle: str):
     global have_checked
     global current_page
     current_page = navtitle
+    setupStyle()
     # General styles
     if is_enabled:
         background = ui.query("body").style("background-color: black")
@@ -55,17 +57,17 @@ def frame(navtitle: str):
     )
     
     #Create a welcome cookies dialog 
-    if not have_checked:
+    """if not have_checked:
         with ui.dialog() as dialog:
             with ui.column().classes("text-blue-500 bg-white p-4 rounded-lg shadow-lg"):
                 ui.label("Welcome to our website!").classes("text-lg font-semibold mb-2 text-center w-full")
-                ui.html("""
+                ui.html("
                     <p class="text-black text-center">We use cookies to improve user experience on our website.</p>
                     <p class="text-black text-center">By clicking "Accept", you consent to the use of all cookies.</p>
-                """)
+                ")
                 ui.button("Accept", on_click=dialog.close).classes("mt-4 mx-auto bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:bg-blue-600")
                 have_checked = True
-            dialog.open()
+            dialog.open()"""
     
     # Create navbar
     with ui.header().classes(

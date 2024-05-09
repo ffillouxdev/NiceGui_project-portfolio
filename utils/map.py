@@ -11,3 +11,6 @@
                 ui.button(icon='zoom_in', on_click=lambda: m.set_zoom(m.zoom + 1))
                 ui.button(icon='zoom_out', on_click=lambda: m.set_zoom(m.zoom - 1))  
 """      
+
+
+#https://github.com/zauberzeug/nicegui/wiki/fly.io-Deployment

@@ -16,107 +16,6 @@ def content() -> None:
     slide_left(".animate_slideInLeft")
     slide_right(".animate_slideInRight")
     all_gsap()
-    ui.add_css(
-        """
-            .cardLang{
-                background-color: #fff;  
-                border: #000 2px solid;
-                margin: 1rem;
-                padding: 3rem;
-                border-radius: 10px;
-            }
-            
-            .cardlang img{
-                width: 100px;
-                padding: 1rem;
-            }
-            
-            .card-plus {
-                width: 150px;
-                height: 250px;
-            }
-            
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-            }
-
-            textarea{
-                resize: none;
-
-            }
-
-            .card-plus {
-                max-width: 200px;
-                max-height: 300px;
-            }
-
-            .card-plus img {
-                width: 100%;
-                height: auto;
-                
-            }
-
-            .usul {
-                margin-left: -14px;
-            }
-
-            #c31 {
-                margin-left: -16px;
-            }
-
-            .col1_sec{
-                margin-left: 10%;
-                margin-top: 3%;
-            }
-
-            .col2_sec{
-                margin-top: 3%;
-            }
-
-
-            .img1 {
-                width: 500px;
-                height: 500px;
-            }
-
-            .first_section{
-                margin-left: 7%;
-                margin-top: 6%; 
-            }
-
-            .card-plus1 {
-                background-color: white;
-            }
-
-            .set_navbar_el_black{
-                color: #000;
-            }
-
-            .set_navbar_hr_black{
-                border-top: 1px solid #000;
-            }
-
-            .text-white1{
-                color: #fff;
-            }
-
-            .screen-section{
-                padding-left: 80%;
-            }
-            
-            .img-spe{
-                width: 300px;
-                height: 350px;
-            }
-            
-            /*.maxSize{
-                max-width: 200px;
-            }*/
-            
-            """
-    )
     with ui.row().classes("w-full h-[110vh]") as first_section:
         with ui.grid(columns=2).classes("w-full h-full FKIRUABB"):
             with ui.column().classes("animate_slideInRight title_section") as col1:
@@ -133,7 +32,7 @@ def content() -> None:
                                 ui.image(source="assets/logdm.webp").classes("w-1/2")
                                 with ui.card_section():
                                     ui.label("DouceMob'").classes(
-                                        "text-lg font-semibold text-center w-[120px]"
+                                        "text-lg font-semibold text-center ml-2"
                                     )
                                 with ui.card_section().classes(""):
                                     ui.button(
@@ -207,10 +106,12 @@ def content() -> None:
         """
         h-screen bg-gray-800 w-full"""
     ) as second_section:
-        ui.label("Mes technologies actuelles").classes(
-            "text-5xl font-bold text-white w-full text-center mt-8"
-        )
-        ui.separator().classes("bg-white h-0.5 w-1/4 mx-auto mb-4")
+        ui.html("""
+                <div class="w-screen top-section2">
+                    <h2 class="text-5xl font-bold text-white w-full text-center mt-8">Mes technologies actuelles</h2>
+                    <hr class="w-1/4 bg-white h-1 mt-2 mb-2 mx-auto">
+                </div>
+                """)
 
         with ui.row().classes("flex justify-center items-center mb-2") as row2:
             create_card_tech("windows.png", "Windows")
@@ -222,10 +123,7 @@ def content() -> None:
             create_card_tech("node.png", "Node.js")
             create_card_tech("react.png", "React")
             create_card_tech("js.png", "Javascript")
-            """create_card_tech("css.png", "CSS")
-            create_card_tech("scss.png", "SCSS")
-            create_card_tech("tailwind.png", "Tailwind")"""
-
+        
     with ui.row().classes(
         "w-full h-2/3 bg-blue-500 text-white flex justify-center section2"
     ) as third_section:

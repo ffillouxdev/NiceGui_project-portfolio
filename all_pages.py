@@ -9,4 +9,3 @@ def create() -> None:
 if __name__ == '__main__':
     create()
     
-#https://github.com/zauberzeug/nicegui/wiki/fly.io-Deployment
