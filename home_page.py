@@ -1,5 +1,5 @@
 from nicegui import ui
-from animationJs import slide_left, slide_right, all_gsap
+from animationJs import slide_left, slide_right, all_gsap, fadeIn
 
 
 def create_card_tech(icon, text):
@@ -15,6 +15,7 @@ def content() -> None:
     # ici met moi une fonction qui appelle gsap
     slide_left(".animate_slideInLeft")
     slide_right(".animate_slideInRight")
+    #fadeIn(".textfade")
     all_gsap()
     with ui.row().classes("w-full h-[110vh]") as first_section:
         with ui.grid(columns=2).classes("w-full h-full FKIRUABB"):
@@ -104,11 +105,11 @@ def content() -> None:
                                     )
     with ui.row().classes(
         """
-        h-screen bg-gray-800 w-full"""
+        h-screen w-full hover_title_1"""
     ) as second_section:
         ui.html("""
-                <div class="w-screen top-section2">
-                    <h2 class="text-5xl font-bold text-white w-full text-center mt-8">Mes technologies actuelles</h2>
+                <div class="w-[98vw] top-section2">
+                    <h2 class="text-5xl font-bold text-white w-full text-center mt-8 title1">Mes technologies actuelles</h2>
                     <hr class="w-1/4 bg-white h-1 mt-2 mb-2 mx-auto">
                 </div>
                 """)
@@ -125,20 +126,20 @@ def content() -> None:
             create_card_tech("js.png", "Javascript")
         
     with ui.row().classes(
-        "w-full h-2/3 bg-blue-500 text-white flex justify-center section2"
+        "w-full h-2/3 text-white flex justify-center section2 hover_title_2"
     ) as third_section:
         with ui.column().classes(
-            "bg-blue-500 w-full p-4 text-white text-center mb-10"
+            " w-full p-4 text-white text-center mb-10"
         ) as col1:
             ui.label("Qui suis-je ?").classes(
-                "text-center text-5xl font-bold w-full mb-2 mt-2"
+                "text-center text-5xl font-bold w-full mb-2 mt-2 title2"
             )
             ui.label(
                 """je suis un jeune en but informatique qui aimerait lié mes passions au domaine de la technologie innovante, tel 
                     que l'aéronatique et le spatial, les banques, la recherche et d'autres. Je suis un touche à tout, j'aime apprendre 
                     et j'aime savoir comment les choses fonctionnent. J'ai 4 centres d'intéréts prédominants qui sont les suivants :
                     """
-            )
+            ).classes("textfade")
             with ui.column().classes(
                 "w-full flex justify-center items-center"
             ) as container:
@@ -206,7 +207,7 @@ def content() -> None:
                                         ).classes("text-gray-500")
 
     with ui.row().classes(
-        "w-full h-screen text-white flex justify-center items-center bg-white hover_section2"
+        "w-full h-screen text-white flex justify-center items-center hover_section2"
     ) as fourth_section:
         with ui.row().classes(
             "w-1/4 flex flex-row shadow-lg h-1/2 rounded-lg bg-blue-500 animate_slideInRight el1"

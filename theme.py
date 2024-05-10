@@ -19,13 +19,13 @@ def dark_mode():
     if not is_enabled:
         is_enabled = True
         print(is_enabled)
-        background = ui.query("body").style("background-color: black")
+        background = ui.query("body").classes("bg-black")
        
 
     else:
         is_enabled = False
         print(is_enabled)
-        background = ui.query("body").style("background-color: lightblue")
+        background = ui.query("body").classes("bg-gray-400")
        
 
 @contextmanager
@@ -39,10 +39,10 @@ def frame(navtitle: str):
     setupStyle()
     # General styles
     if is_enabled:
-        background = ui.query("body").style("background-color: black")
+        background = ui.query("body").classes("bg-black")
         foreground = ui.query("a").classes("text-white")
     else:
-        background = ui.query("body").style("background-color: lightblue")
+        background = ui.query("body").classes("bg-gray-400")
         foreground = ui.query("a").classes("text-white")
 
     dark = ui.dark_mode()
@@ -57,17 +57,17 @@ def frame(navtitle: str):
     )
     
     #Create a welcome cookies dialog 
-    """if not have_checked:
+    if not have_checked:
         with ui.dialog() as dialog:
             with ui.column().classes("text-blue-500 bg-white p-4 rounded-lg shadow-lg"):
                 ui.label("Welcome to our website!").classes("text-lg font-semibold mb-2 text-center w-full")
-                ui.html("
+                ui.html("""
                     <p class="text-black text-center">We use cookies to improve user experience on our website.</p>
                     <p class="text-black text-center">By clicking "Accept", you consent to the use of all cookies.</p>
-                ")
+                """)
                 ui.button("Accept", on_click=dialog.close).classes("mt-4 mx-auto bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:bg-blue-600")
                 have_checked = True
-            dialog.open()"""
+            dialog.open()
     
     # Create navbar
     with ui.header().classes(
@@ -92,7 +92,7 @@ def frame(navtitle: str):
 
     # Create footer
     with ui.footer().classes(
-        "flex justify-center items-center w-full h-16 bg-gray-800 text-white fixed bottom-0"
+        "flex justify-center items-center w-full h-16 text-white fixed bottom-0"
     ) as footer:
         footerLabel = ui.label("© 2024 All rights reserved")
         logo = ui.image(source="assets/logo.jpg").classes("w-6 h-6")

@@ -2,24 +2,29 @@ import theme
 import numpy as np
 from nicegui import ui
 from matplotlib import pyplot as plt
-from utils.recupData import refresh_CounterForWebsiteTrafic, init_db, close_db, refresh_CounterFoProjectsNumber, recup_CounterOfCommits
+from utils.recupData import (
+    refresh_CounterForWebsiteTrafic,
+    init_db,
+    close_db,
+    refresh_CounterFoProjectsNumber,
+    recup_CounterOfCommits,
+)
 
 
 async def aboutPage():
     await init_db()
     val = await recup_CounterOfCommits()
-    print(val)
     try:
         with theme.frame("About"):
             ui.page_title("About me")
             ui.context.client.content.classes("p-0 gap-0")
-            with ui.row() as first_section:
+            with ui.row().classes("mb-8") as first_section:
                 with ui.grid(columns=2).classes("first_section"):
                     with ui.column().classes("ml-8"):
                         ui.image(source="assets/about.png").classes("img1")
                     with ui.column().classes("w-2/3 p-4"):
                         ui.label("A propos de moi").classes(
-                            "text-center text-white text-4xl font-semibold pt-4"
+                            "text-center text-white text-4xl font-semibold pt-4 title3"
                         )
                         ui.label("Bienvenue sur mon portfolio !").classes(
                             "text-bold text-white text-lg"
@@ -49,7 +54,7 @@ async def aboutPage():
                         ).classes(
                             "bg-blue-500 text-white text-md px-8 py-3 rounded-lg hover:bg-blue-600 focus:outline-none focus:bg-blue-600 downloadCV"
                         )
-            with ui.row().classes("h-screen w-[100%] bg-blue-500") as second_section:
+            with ui.row().classes("h-screen w-[100%]") as second_section:
                 ui.html(
                     """
                     <div class="w-[98vw]">
@@ -87,3 +92,6 @@ async def aboutPage():
                             )
     finally:
         await close_db()
+
+
+# https://matplotlib.org/stable/tutorials/pyplot.html

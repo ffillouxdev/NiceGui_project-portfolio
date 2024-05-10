@@ -61,4 +61,5 @@ from bs4 import BeautifulSoup
 
 async def recup_CounterOfCommits():
     """Web scraping sur GitHub pour récupérer le nombre de commits réalisés"""
-    pass
+    commits = 180
+    return commits
