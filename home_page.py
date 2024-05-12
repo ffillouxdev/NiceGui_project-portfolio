@@ -15,10 +15,24 @@ def content() -> None:
     # ici met moi une fonction qui appelle gsap
     slide_left(".animate_slideInLeft")
     slide_right(".animate_slideInRight")
-    #fadeIn(".textfade")
+    # fadeIn(".textfade")
     all_gsap()
-    with ui.row().classes("w-full h-[110vh]") as first_section:
-        with ui.grid(columns=2).classes("w-full h-full FKIRUABB"):
+    with ui.row().classes("") as first_section:
+        with ui.row().classes("parallax"):
+            ui.html(
+                """
+                    <section class="parallax_group w-[98.5vw] h-[100vh]">
+                        <img src="static/parallax/montainss2.png" class="w-[98vw] h-[100vh] montains2" alt="montains2">
+                        <img src="static/parallax/montainss3.png" class="w-[98vw] h-[100vh]" alt="montains3">
+                        <img src="static/parallax/montainss4.png" class="w-full h-[100vh] montains4" alt="montains4">
+                        <img src="static/parallax/dune-bottom.png" class="w-full h-[100vh] dune1 absolute z-20" alt="dune1">
+                        <img src="static/parallax/moon.png" class="moon absolute top-40 z-10" alt="moon" style="transform: translateY(-20vh);">
+                        <h1 class="font-bold text-white text-center text-7xl mt-[25vh] md:text-9xl relative z-10">Florian Filloux</h1>
+                    </section>
+                    """
+            )
+    with ui.row().classes("w-full h-[100vh] second_section") as second_section:
+        with ui.grid(columns=2).classes("w-full h-full FKIRUABB pt-[5%] ]"):
             with ui.column().classes("animate_slideInRight title_section") as col1:
                 ui.html("<h1 class='text-6xl font-bold text-white text-left pl-8 pt-8 pr-8'>Bienvenue sur <br> mon site</h1>")
                 ui.html("<p class='text-white text-left pl-9'>c'est un site simple utilisant nicegui !</p>")
@@ -103,10 +117,11 @@ def content() -> None:
                                     ).classes(
                                         "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                                     )
+            ui.html("""<div class="hover_title_1"></div>""")                            
     with ui.row().classes(
         """
-        h-screen w-full hover_title_1"""
-    ) as second_section:
+        h-screen w-full"""
+    ).classes("third_section") as third_section:
         ui.html("""
                 <div class="w-[98vw] top-section2">
                     <h2 class="text-5xl font-bold text-white w-full text-center mt-8 title1">Mes technologies actuelles</h2>
@@ -126,8 +141,8 @@ def content() -> None:
             create_card_tech("js.png", "Javascript")
         
     with ui.row().classes(
-        "w-full h-2/3 text-white flex justify-center section2 hover_title_2"
-    ) as third_section:
+        "w-full h-2/3 text-white flex justify-center section2 hover_title_2 fourth_section"
+    ) as fourth_section:
         with ui.column().classes(
             " w-full p-4 text-white text-center mb-10"
         ) as col1:
@@ -207,8 +222,8 @@ def content() -> None:
                                         ).classes("text-gray-500")
 
     with ui.row().classes(
-        "w-full h-screen text-white flex justify-center items-center hover_section2"
-    ) as fourth_section:
+        "w-full h-screen text-white flex justify-center items-center hover_section2 fifth_section"
+    ) as fifth_section:
         with ui.row().classes(
             "w-1/4 flex flex-row shadow-lg h-1/2 rounded-lg bg-blue-500 animate_slideInRight el1"
         ) as col1:

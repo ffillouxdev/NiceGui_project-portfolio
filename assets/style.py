@@ -26,6 +26,8 @@ def setupStyle():
                 margin: 0;
                 padding: 0;
                 width: 100%;
+                background: url('static/parallax/montainsss.jpg') no-repeat center center fixed;
+                background-size: cover;
             }
 
             textarea{
@@ -67,12 +69,6 @@ def setupStyle():
                 height: 500px;
             }
 
-            .first_section{
-                margin-left: 7%;
-                margin-top: 6%;
-                height: 80vh;
-            }
-
             .card-plus1 {
                 background-color: white;
             }
@@ -101,5 +97,66 @@ def setupStyle():
             /*.maxSize{
                 max-width: 200px;
             }*/
+            
+            
+            section{
+                position: relative;
+                height: 100vh;
+                width: 100%;
+                overflow: hidden;
+                padding: 5vw;
+            }
+            
+
+            section img{
+                position: absolute;
+                top 0;
+                left: 0;
+                display: block;
+                object-fit: cover;
+            }
+            
+            .parallax_group{
+            }
+            
+            .parallax_group:after{
+                content: "";
+                height: 30vh;
+                postion: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 100%);
+            }
+            
+            .shadow_transi{
+                postion: absolute;
+                bottom: 100%;
+                height: 300px;
+                width: 100%;
+                left: 0;
+                z-index: 50;
+                background: linear-gradient(to top, #151515, transparent);
+            }
+            
+            .second_section {
+                background: rgb(37, 27, 24);
+                background: linear-gradient(180deg, rgba(37, 27, 24, 1) 10%, rgba(0, 0, 0, 1) 90%, #031D38);
+            }
+            
+            .third_section {
+                background: linear-gradient(180deg, #031D38, 85%, #2560A6);
+            }
+            
+            .fourth_section {
+                background: linear-gradient(180deg, #2560A6, 90%, #0C4C8C);
+            }
+            
+            .fifth_section {
+                background: linear-gradient(180deg, #0C4C8C, 90%, #FFF);
+            }
             """
     )
+
+
+# https://cdna.artstation.com/p/assets/images/images/031/726/410/original/adele-meunier-finaltitregifloop.gif?1604422953

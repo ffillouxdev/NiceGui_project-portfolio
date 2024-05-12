@@ -48,7 +48,7 @@ def frame(navtitle: str):
     dark = ui.dark_mode()
     style = ui.add_head_html(
         """
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
         <link rel="stylesheet" type="text/css" href="/static/css/style.css">
         <script src="/static/js/gsap.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
@@ -57,17 +57,17 @@ def frame(navtitle: str):
     )
     
     #Create a welcome cookies dialog 
-    if not have_checked:
+    """if not have_checked:
         with ui.dialog() as dialog:
             with ui.column().classes("text-blue-500 bg-white p-4 rounded-lg shadow-lg"):
                 ui.label("Welcome to our website!").classes("text-lg font-semibold mb-2 text-center w-full")
-                ui.html("""
+                ui.html("
                     <p class="text-black text-center">We use cookies to improve user experience on our website.</p>
                     <p class="text-black text-center">By clicking "Accept", you consent to the use of all cookies.</p>
-                """)
+                ")
                 ui.button("Accept", on_click=dialog.close).classes("mt-4 mx-auto bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:bg-blue-600")
                 have_checked = True
-            dialog.open()
+            dialog.open()"""
     
     # Create navbar
     with ui.header().classes(

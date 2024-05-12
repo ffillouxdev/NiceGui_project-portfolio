@@ -50,7 +50,52 @@ def slideDownOut(element):
 #class_list = ["animate_slideInUp", "animate_slideInDown", "animate_slideInLeft", "animate_slideInRight"]
 
 def all_gsap():
-    ui.run_javascript("")
+    ui.run_javascript("""
+                var parallax = gsap.timeline({
+                scrollTrigger: {
+                        trigger: ".parallax_group",
+                        start: "top top",
+                        end: "+=200%",
+                        scrub: true
+                    }
+                });
+
+                parallax.to('.montains2', {
+                    scale:1.05,
+                    duration: 1,
+                    ease: "none",
+                    y : '5vh',
+                });
+
+                parallax.to('.montains4', {
+                    scale: 1.1,
+                    duration: 1,
+                    ease: "none",
+                    y: '-5vh'
+                }, "-=1");
+
+                parallax.to('.dune1', {
+                    scale: 1.1,
+                    duration: 1,
+                    ease: "none",
+                    y: '-5vh'
+                }, "-=1");
+
+                parallax.to('.moon', {
+                    scale: 1.2,
+                    duration: .3,
+                    ease: "none",
+                    y: '20vh'                
+                    }, "-=1");
+
+
+               parallax.to('.parallax_group h1', {
+                    opacity: 0,
+                    duration: 0.5,
+                    ease: "none",
+                    y: '-50vh'
+                }, "-=1");
+                      """)
 
 
 #https://bepatrickdavid.com/

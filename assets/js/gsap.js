@@ -7,7 +7,7 @@ function slideRight(element) {
 }
 
 function slideUp(element) {
-    gsap.from(element, { opacity: 0, y: "66%", duration: 0.5, ease: "power2.out" });
+    gsap.from(element, { opacity: 0, y: "150%", duration: 0.5, ease: "power2.out" });
 }
 
 function slideDown(element) {
@@ -64,18 +64,20 @@ document.addEventListener('DOMContentLoaded', function () {
     var sections = document.querySelectorAll('.hover_section2');
     var title1 = document.querySelectorAll('.hover_title_1');
     var title2 = document.querySelectorAll('.hover_title_2');
+    var animate_slideInRight = document.querySelectorAll('.FKIRUABB');
 
     sections.forEach((section) => {
         gsap.to(section, {
             scrollTrigger: {
                 trigger: section,
-                start: "top 50%",
+                start: "top 100%",
                 onEnter: () => {
                     if (!animationsTriggered) {
                         slideRight('.el1');
                         slideLeft('.el2');
                         setNavbarBlack();
                         animationsTriggered = true;
+                        console.log('Ok');   
                     }
                 },
                 onLeaveBack: () => {
@@ -87,6 +89,27 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
+
+    animate_slideInRight.forEach((element) => {
+        gsap.to(element, {
+            scrollTrigger: {
+                trigger: element,
+                start: "top 50%",
+                onEnter: () => {
+                    if (!animationsTriggered) {
+                        slideRight('.title_section');
+                        animationsTriggered = true;
+                    }
+                },
+                onLeaveBack: () => {
+                    if (animationsTriggered) {
+                        animationsTriggered = false;
+                    }
+                }
+            }
+        });
+    });
+
 
     gsap.to(window, {
         scrollTrigger: {
@@ -116,6 +139,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 onEnter: () => {
                     if (!animationsTriggered) {
                         slideUp('.title1');
+                        animationsTriggered = true;
                     }
                 },
                 onLeaveBack: () => {
@@ -147,3 +171,5 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
+
