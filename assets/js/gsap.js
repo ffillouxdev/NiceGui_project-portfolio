@@ -1,37 +1,20 @@
-function slideLeft(element) {
-    gsap.from(element, { opacity: 0, x: "50%", duration: 0.5, ease: "power2.out" });
+function animateSection1() {
+    gsap.from('.title_section', { opacity: 0, x: "-50%", duration: 1.5, ease: "power2.out" });
 }
 
-function slideRight(element) {
-    gsap.from(element, { opacity: 0, x: "-50%", duration: 0.5, ease: "power2.out" });
+function animateSection5() {
+    gsap.from('.el1', { opacity: 0, x: "-50%", duration: 1, ease: "power2.out" });
+    gsap.from('.el2', { opacity: 0, x: "50%", duration: 1, ease: "power2.out"});
+    setNavbarBlack();
 }
 
-function slideUp(element) {
-    gsap.from(element, { opacity: 0, y: "150%", duration: 0.5, ease: "power2.out" });
+function animateSection3() {
+    gsap.from('.title1', { opacity: 0, y: "50%", duration: 1.5, ease: "power2.out" });
 }
 
-function slideDown(element) {
-    gsap.from(element, { opacity: 0, y: "-40%", duration: 0.5, ease: "power2.out" });
-}
-
-function fadeIn(element) {
-    gsap.from(element, { opacity: 0, duration: 2.0, ease: "power2.out" });
-}
-
-function fadeOut(element) {
-    gsap.to(element, { opacity: 0, duration: 0.5, ease: "power2.out" });
-}
-
-function slideLeftOut(element) {
-    gsap.to(element, { opacity: 0, x: "-50%", duration: 0.5, ease: "power2.out" });
-}
-
-function slideRightOut(element) {
-    gsap.to(element, { opacity: 0, x: "50%", duration: 0.5, ease: "power2.out" });
-}
-
-function slideUpOut(element) {
-    gsap.to(element, { opacity: 0, y: "66%", duration: 0.5, ease: "power2.out" });
+function animateSection4() {
+    // slideRight
+    gsap.from('.title2', { opacity: 0, x: "-50%", duration: 2.2, ease: "power2.out" });
 }
 
 function setNavbarBlack() {
@@ -58,58 +41,79 @@ function removeSetNavbarBlack() {
     navbarHr.classList.remove('set_navbar_hr_black');
 }
 
-var animationsTriggered = false;
-
+// Initialisation des animations
 document.addEventListener('DOMContentLoaded', function () {
-    var sections = document.querySelectorAll('.hover_section2');
-    var title1 = document.querySelectorAll('.hover_title_1');
-    var title2 = document.querySelectorAll('.hover_title_2');
-    var animate_slideInRight = document.querySelectorAll('.FKIRUABB');
+    var section1 = document.querySelector('.parallax_group');
+    var section2 = document.querySelector('.second');
+    var section3 = document.querySelector('.third');
+    var section4 = document.querySelector('.fourth');
+    var section5 = document.querySelector('.fifth');
+    var animationsTriggered = { section1: false, section2: false, section3: false, section4: false, section5: false };
 
-    sections.forEach((section) => {
-        gsap.to(section, {
-            scrollTrigger: {
-                trigger: section,
-                start: "top 100%",
-                onEnter: () => {
-                    if (!animationsTriggered) {
-                        slideRight('.el1');
-                        slideLeft('.el2');
-                        setNavbarBlack();
-                        animationsTriggered = true;
-                        console.log('Ok');   
-                    }
-                },
-                onLeaveBack: () => {
-                    if (animationsTriggered) {
-                        removeSetNavbarBlack();
-                        animationsTriggered = false;
-                    }
+    gsap.to(section1, {
+        scrollTrigger: {
+            trigger: section1,
+            start: "top top",
+            onEnter: () => {
+                if (!animationsTriggered.section1) {
+                    animateSection1();
+                    animationsTriggered.section1 = true;
                 }
+            },
+            onLeaveBack: () => {
+                animationsTriggered.section1 = false;
             }
-        });
+        }
     });
 
-    animate_slideInRight.forEach((element) => {
-        gsap.to(element, {
-            scrollTrigger: {
-                trigger: element,
-                start: "top 50%",
-                onEnter: () => {
-                    if (!animationsTriggered) {
-                        slideRight('.title_section');
-                        animationsTriggered = true;
-                    }
-                },
-                onLeaveBack: () => {
-                    if (animationsTriggered) {
-                        animationsTriggered = false;
-                    }
+    gsap.to(section5, {
+        scrollTrigger: {
+            trigger: section5,
+            start: "top 80%",
+            onEnter: () => {
+                if (!animationsTriggered.section2) {
+                    animateSection5();
+                    animationsTriggered.section2 = true;
                 }
+            },
+            onLeaveBack: () => {
+                animationsTriggered.section2 = false;
+                removeSetNavbarBlack();
             }
-        });
+        }
     });
 
+    gsap.to(section3, {
+        scrollTrigger: {
+            trigger: section3,
+            start: "top 80%",
+            onEnter: () => {
+                if (!animationsTriggered.section3) {
+                    animateSection3();
+                    animationsTriggered.section3 = true;
+                }
+            },
+            onLeaveBack: () => {
+                animationsTriggered.section3 = false;
+            }
+        }
+    });
+
+    gsap.to(section4, {
+        scrollTrigger: {
+            trigger: section4,
+            start: "top 80%",
+            onEnter: () => {
+                if (!animationsTriggered.section4) {
+                    animateSection4();
+                    animationsTriggered.section4 = true;
+                }
+            },
+            onLeaveBack: () => {
+                animationsTriggered.section4 = false;
+            }
+        }
+    });
 
     gsap.to(window, {
         scrollTrigger: {
@@ -130,46 +134,4 @@ document.addEventListener('DOMContentLoaded', function () {
             repeat: -1
         });
     }, 1000);
-
-    title1.forEach((title) => {
-        gsap.to(title, {
-            scrollTrigger: {
-                trigger: title,
-                start: "top 50%",
-                onEnter: () => {
-                    if (!animationsTriggered) {
-                        slideUp('.title1');
-                        animationsTriggered = true;
-                    }
-                },
-                onLeaveBack: () => {
-                    if (animationsTriggered) {
-                        animationsTriggered = false;
-                    }
-                }
-            }
-        });
-    });
-
-    title2.forEach((title) => {
-        gsap.to(title, {
-            scrollTrigger: {
-                trigger: title,
-                start: "top 50%",
-                onEnter: () => {
-                    if (!animationsTriggered) {
-                        slideRight('.title2');
-                        fadeIn('.textfade');
-                    }
-                },
-                onLeaveBack: () => {
-                    if (animationsTriggered) {
-                        animationsTriggered = false;
-                    }
-                }
-            }
-        });
-    });
 });
-
-

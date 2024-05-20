@@ -3,15 +3,15 @@ from nicegui import ui, app
 from assets.style import setupStyle
 
 
-app.add_static_files('/static', 'assets/')
+app.add_static_files("/static", "assets/")
 # Ajoute le fichier gsap.js comme fichier statique
-
 
 
 is_enabled = False
 current_page = "/"
 button_submit = None
 have_checked = False
+
 
 def dark_mode():
     global is_enabled
@@ -20,13 +20,12 @@ def dark_mode():
         is_enabled = True
         print(is_enabled)
         background = ui.query("body").classes("bg-black")
-       
 
     else:
         is_enabled = False
         print(is_enabled)
         background = ui.query("body").classes("bg-gray-400")
-       
+
 
 @contextmanager
 def frame(navtitle: str):
@@ -48,27 +47,33 @@ def frame(navtitle: str):
     dark = ui.dark_mode()
     style = ui.add_head_html(
         """
-        <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="/static/css/style.css">
         <script src="/static/js/gsap.js"></script>
+        <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrambleTextPlugin.min.js"></script>
         """
     )
-    
-    #Create a welcome cookies dialog 
-    """if not have_checked:
+
+    # Create a welcome cookies dialog
+    if not have_checked:
         with ui.dialog() as dialog:
             with ui.column().classes("text-blue-500 bg-white p-4 rounded-lg shadow-lg"):
-                ui.label("Welcome to our website!").classes("text-lg font-semibold mb-2 text-center w-full")
-                ui.html("
+                ui.label("Welcome to our website!").classes(
+                    "text-lg font-semibold mb-2 text-center w-full"
+                )
+                ui.html(
+                    """
                     <p class="text-black text-center">We use cookies to improve user experience on our website.</p>
                     <p class="text-black text-center">By clicking "Accept", you consent to the use of all cookies.</p>
-                ")
-                ui.button("Accept", on_click=dialog.close).classes("mt-4 mx-auto bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:bg-blue-600")
+                """
+                )
+                ui.button("Accept", on_click=dialog.close).classes(
+                    "mt-4 mx-auto bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+                )
                 have_checked = True
-            dialog.open()"""
-    
+            dialog.open()
+
     # Create navbar
     with ui.header().classes(
         "flex justify-between items-center transparent no-shadow navbar"
@@ -76,17 +81,17 @@ def frame(navtitle: str):
         with ui.row().classes("flex justify-center items-center w-full"):
             home = ui.link("Home", "/").classes(
                 "text-lg font-bold no-underline hover:underline"
-                + (" text-red" if navtitle == "Homepage" else "")
+                + (" text-blue" if navtitle == "Homepage" else "")
             )
             about = ui.link("About", "/About/").classes(
                 "text-lg font-bold no-underline hover:underline"
-                + (" text-red" if navtitle == "About" else "")
+                + (" text-blue" if navtitle == "About" else "")
             )
             contact = ui.link("Contact", "/Contact").classes(
                 "text-lg font-bold no-underline hover:underline"
-                + (" text-red" if navtitle == "Contact" else "")
+                + (" text-blue" if navtitle == "Contact" else "")
             )
-            dark_button1 = ui.button("Dark", on_click=dark_mode)
+            dark_button1 = ui.button("Dark", on_click=dark_mode, color='blue')
         with ui.row().classes("flex justify-center items-center w-full"):
             separator1 = ui.separator().classes("w-1/3 bg-white navbar_hr")
 
@@ -99,5 +104,3 @@ def frame(navtitle: str):
         with ui.row().classes("flex justify-center items-center w-full"):
             separator2 = ui.separator().classes("w-1/3 bg-white")
     yield
-    
-    

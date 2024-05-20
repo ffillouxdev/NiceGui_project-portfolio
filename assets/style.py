@@ -139,21 +139,29 @@ def setupStyle():
                 background: linear-gradient(to top, #151515, transparent);
             }
             
-            .second_section {
+            .first.section {
+            }
+            
+            .second.section {
                 background: rgb(37, 27, 24);
                 background: linear-gradient(180deg, rgba(37, 27, 24, 1) 10%, rgba(0, 0, 0, 1) 90%, #031D38);
             }
             
-            .third_section {
+            .third.section {
                 background: linear-gradient(180deg, #031D38, 85%, #2560A6);
             }
             
-            .fourth_section {
+            .fourth.section {
                 background: linear-gradient(180deg, #2560A6, 90%, #0C4C8C);
             }
             
-            .fifth_section {
+            .fifth.section {
                 background: linear-gradient(180deg, #0C4C8C, 90%, #FFF);
+            }
+            
+            .container{
+                max-height: 100vh;
+                scroll-snap-type: y mandatory;
             }
             """
     )
