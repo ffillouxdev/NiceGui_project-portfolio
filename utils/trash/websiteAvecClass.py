@@ -1,22 +1,23 @@
 from nicegui import ui
 
+
 class MyWebsite:
     def __init__(self):
         self.is_enabled = False
         self.current_page = "/"
 
     def set_style(self):
-    # General styles
+        # General styles
         if self.is_enabled:
             self.background = ui.query("body").style("background-color: black")
             self.foreground = ui.query("a").classes("text-white")
         else:
             self.background = ui.query("body").style("background-color: lightblue")
             self.foreground = ui.query("a").classes("text-white")
-            
-            
+
         self.dark = ui.dark_mode()
-        self.style = ui.add_head_html("""
+        self.style = ui.add_head_html(
+            """
             <style>
                 body {
                     margin: 0;
@@ -95,8 +96,8 @@ class MyWebsite:
                     animation: slidedown 1.2s;
                 }
             </style>
-        """)       
-
+        """
+        )
 
     def create_navbar(self):
         with ui.header().classes(
@@ -121,13 +122,11 @@ class MyWebsite:
 
     def create_footer(self):
         with ui.footer().classes(
-            "flex justify-center items-center w-full h-16 bg-gray-800 text-white fixed bottom-0" 
+            "flex justify-center items-center w-full h-16 bg-gray-800 text-white fixed bottom-0"
         ) as footer:
             self.footerLabel = ui.label("© 2024 All rights reserved")
             with ui.row().classes("flex justify-center items-center w-full"):
                 self.separator2 = ui.separator().classes("w-1/3 bg-white")
-                
-
 
     def main_section(self):
         with ui.row().classes(
@@ -191,81 +190,110 @@ class MyWebsite:
                 "bg-blue-500 w-full p-4 text-white text-center mb-10"
             ) as col1:
                 ui.label("We create amazing websites only with python").classes(
-                    "text-center text-5xl font-bold w-full mb-2 mt-2" 
+                    "text-center text-5xl font-bold w-full mb-2 mt-2"
                 )
                 ui.label(
                     """lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
                          ut labore et dolore magna aliqua lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"""
                 )
-                with ui.column().classes("w-full flex justify-center items-center") as container:
-                    with ui.row().classes("w-full flex justify-center items-center") as row:
-                        with ui.card().tight().classes(
-                            "card-plus"
-                        ) as card1:
-                                with ui.card_section():
-                                    with ui.row().classes("") as row:
-                                        ui.icon("done").classes("text-5xl bg-blue-500 text-white rounded-full mr-4")
-                                        
-                                        with ui.column().classes(""):
-                                            ui.label("Python").classes(" font-semibold text-black")
-                                            ui.label("nicegui is a python web gui library").classes("text-gray-500")
-                                        
-                                    #ui.icon("done").classes("text-5xl bg-blue-500 text-white rounded-full mr-4")
+                with ui.column().classes(
+                    "w-full flex justify-center items-center"
+                ) as container:
+                    with ui.row().classes(
+                        "w-full flex justify-center items-center"
+                    ) as row:
+                        with ui.card().tight().classes("card-plus") as card1:
+                            with ui.card_section():
+                                with ui.row().classes("") as row:
+                                    ui.icon("done").classes(
+                                        "text-5xl bg-blue-500 text-white rounded-full mr-4"
+                                    )
+
+                                    with ui.column().classes(""):
+                                        ui.label("Python").classes(
+                                            " font-semibold text-black"
+                                        )
+                                        ui.label(
+                                            "nicegui is a python web gui library"
+                                        ).classes("text-gray-500")
+
+                                # ui.icon("done").classes("text-5xl bg-blue-500 text-white rounded-full mr-4")
 
                         with ui.column().classes(""):
-                           with ui.card().tight().classes(
-                            "card-plus"
-                            ) as card2:
+                            with ui.card().tight().classes("card-plus") as card2:
                                 with ui.card_section():
                                     with ui.row().classes("") as row:
-                                        ui.icon("done").classes("text-5xl bg-blue-500 text-white rounded-full mr-4")
-                                        
+                                        ui.icon("done").classes(
+                                            "text-5xl bg-blue-500 text-white rounded-full mr-4"
+                                        )
+
                                         with ui.column().classes(""):
-                                            ui.label("Python").classes(" font-semibold text-black")
-                                            ui.label("nicegui is a python web gui library").classes("text-gray-500")
-                        
+                                            ui.label("Python").classes(
+                                                " font-semibold text-black"
+                                            )
+                                            ui.label(
+                                                "nicegui is a python web gui library"
+                                            ).classes("text-gray-500")
+
                     with ui.row().classes(""):
-                        with ui.card().tight().classes(
-                            "card-plus"
-                            ) as card3:
-                                with ui.card_section():
-                                    with ui.row().classes("") as row:
-                                        ui.icon("done").classes("text-5xl bg-blue-500 text-white rounded-full mr-4")
-                                        
-                                        with ui.column().classes(""):
-                                            ui.label("Python").classes(" font-semibold text-black")
-                                            ui.label("nicegui is a python web gui library").classes("text-gray-500")
+                        with ui.card().tight().classes("card-plus") as card3:
+                            with ui.card_section():
+                                with ui.row().classes("") as row:
+                                    ui.icon("done").classes(
+                                        "text-5xl bg-blue-500 text-white rounded-full mr-4"
+                                    )
+
+                                    with ui.column().classes(""):
+                                        ui.label("Python").classes(
+                                            " font-semibold text-black"
+                                        )
+                                        ui.label(
+                                            "nicegui is a python web gui library"
+                                        ).classes("text-gray-500")
                         with ui.column().classes(""):
-                            with ui.card().tight().classes(
-                            "card-plus"
-                            ) as card4:
+                            with ui.card().tight().classes("card-plus") as card4:
                                 with ui.card_section():
                                     with ui.row().classes("") as row:
-                                        ui.icon("done").classes("text-5xl bg-blue-500 text-white rounded-full mr-4")
-                                        
+                                        ui.icon("done").classes(
+                                            "text-5xl bg-blue-500 text-white rounded-full mr-4"
+                                        )
+
                                         with ui.column().classes(""):
-                                            ui.label("Python").classes(" font-semibold text-black")
-                                            ui.label("nicegui is a python web gui library").classes("text-gray-500")
-                                   
-      
+                                            ui.label("Python").classes(
+                                                " font-semibold text-black"
+                                            )
+                                            ui.label(
+                                                "nicegui is a python web gui library"
+                                            ).classes("text-gray-500")
+
         with ui.row().classes(
-            "w-full h-screen text-white flex justify-center items-center bg-white"   
+            "w-full h-screen text-white flex justify-center items-center bg-white"
         ) as third_section:
-            with ui.row().classes("w-1/4 flex flex-row shadow-lg h-1/2 rounded-lg bg-blue-500 animate__slideInRight") as col1:
+            with ui.row().classes(
+                "w-1/4 flex flex-row shadow-lg h-1/2 rounded-lg bg-blue-500 animate__slideInRight"
+            ) as col1:
                 with ui.row() as row2:
                     with ui.column().classes("p-4") as col1:
-                        ui.label("Why choose us").classes("text-2xl font-bold mb-2 w-full text-center")
-                        ui.label("""lorem ipsum dolor sit amet, consectetur
+                        ui.label("Why choose us").classes(
+                            "text-2xl font-bold mb-2 w-full text-center"
+                        )
+                        ui.label(
+                            """lorem ipsum dolor sit amet, consectetur
                                 adipiscing elit, sed do eiusmod tempor 
                                 incididunt ut labore et dolore magna aliqua
-                                """).classes("w-full text-mg")
-                        ui.label("""lorem ipsum dolor sit amet, consectetur sit amet, consectetur, elit, sed do eiusmod tempor""").classes("w-full text-mg")
-                        ui.button("Read More").classes("bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mx-auto")
-            with ui.row().classes("w-1/3 h-1/3 bg-white flex justify-center items-center animate__slideInLeft") as col2:
+                                """
+                        ).classes("w-full text-mg")
+                        ui.label(
+                            """lorem ipsum dolor sit amet, consectetur sit amet, consectetur, elit, sed do eiusmod tempor"""
+                        ).classes("w-full text-mg")
+                        ui.button("Read More").classes(
+                            "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mx-auto"
+                        )
+            with ui.row().classes(
+                "w-1/3 h-1/3 bg-white flex justify-center items-center animate__slideInLeft"
+            ) as col2:
                 ui.image(source="assets/img3.png").classes("img-spe")
 
-       
-                
                 """with ui.column().classes(
                     "flex flex-col bg-blue-800 w-1/2 p-4 text-white text-center"  
                 ) as col1:
@@ -275,16 +303,18 @@ class MyWebsite:
                             incididunt ut labore et dolore magna aliqua
                             ).classes("w-1/4 text-mg")
                     ui.button("Read More").classes("bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded")"""
-                    
-                
 
     def contactForm(self):
-        with ui.row().classes("flex justify-center items-center w-full h-2/3 animate__slideInUp"):
+        with ui.row().classes(
+            "flex justify-center items-center w-full h-2/3 animate__slideInUp"
+        ):
             with ui.column().classes("bg-white w-1/2 p-4 shadow-lg") as col1:
                 self.welcomeLabel = ui.markdown("### Get in touch").classes(
                     "text-lg font-semibold mx-auto"
                 )
-                self.separator = ui.separator().classes("w-2/3 bg-gray-800 mb-4 mx-auto")
+                self.separator = ui.separator().classes(
+                    "w-2/3 bg-gray-800 mb-4 mx-auto"
+                )
                 self.input_name = ui.input(
                     label="Your Name", placeholder="John Doe"
                 ).classes(
@@ -306,7 +336,9 @@ class MyWebsite:
                 )
                 self.button_submit.on_click(self.on_click)
 
-            with ui.column().classes("bg-blue-400 w-1/3 h-1/2 p-8 shadow-lg text-white") as col2:
+            with ui.column().classes(
+                "bg-blue-400 w-1/3 h-1/2 p-8 shadow-lg text-white"
+            ) as col2:
                 self.contactLabel = ui.markdown("### Contact Us").classes(
                     "text-lg font-semibold mb-4"
                 )
@@ -322,7 +354,11 @@ class MyWebsite:
                         "text-lg"
                     )
                 with ui.row().classes("flex items-center mb-4"):
-                    self.icon = ui.icon("o_home").classes("text-4xl text-blue-500 mr-4").classes("ml-1")
+                    self.icon = (
+                        ui.icon("o_home")
+                        .classes("text-4xl text-blue-500 mr-4")
+                        .classes("ml-1")
+                    )
                     self.locationLabel = ui.label(
                         "Loc : 123 Street, City, Country"
                     ).classes("text-lg")
@@ -371,8 +407,6 @@ class MyWebsite:
         self.create_footer()
 
 
-
-
 """
 @ui.page("/About")
 def about():
@@ -385,10 +419,85 @@ website = MyWebsite()
 website.runWebsite()
 """
 
+"""
+with ui.column().classes(
+                    " w-full p-4 text-white text-center mb-10"
+                ) as col1:
+                    ui.label("Qui suis-je ?").classes(
+                        "text-center text-5xl font-bold w-full mb-2 mt-2 title2"
+                    )
+                    ui.label(
+                        "je suis un jeune en but informatique qui aimerait lié mes passions au domaine de la technologie innovante, tel 
+                            que l'aéronatique et le spatial, les banques, la recherche et d'autres. Je suis un touche à tout, j'aime apprendre 
+                            et j'aime savoir comment les choses fonctionnent. J'ai 4 centres d'intéréts prédominants qui sont les suivants :
+                            "
+                    ).classes("textfade")
+                    with ui.column().classes(
+                        "w-full flex justify-center items-center"
+                    ) as container:
+                        with ui.row().classes(
+                            "w-full flex justify-center items-center"
+                        ) as row:
+                            with ui.card().tight().classes("card-plus1") as card1:
+                                with ui.card_section():
+                                    with ui.row().classes("") as row:
+                                        ui.icon("done").classes(
+                                            "text-5xl bg-blue-500 text-white rounded-full mr-4"
+                                        )
 
+                                        with ui.column().classes(""):
+                                            ui.label("Python").classes(
+                                                " font-semibold text-black"
+                                            )
+                                            ui.label(
+                                                "Pour la simplicité et sa communauté"
+                                            ).classes("text-gray-500")
 
+                            with ui.column().classes(""):
+                                with ui.card().tight().classes("card-plus1") as card2:
+                                    with ui.card_section():
+                                        with ui.row().classes("") as row:
+                                            ui.icon("done").classes(
+                                                "text-5xl bg-blue-500 text-white rounded-full mr-4"
+                                            )
 
+                                            with ui.column().classes(""):
+                                                ui.label("C++").classes(
+                                                    " font-semibold text-black"
+                                                )
+                                                ui.label(
+                                                    "Pour la performance et l'architecture"
+                                                ).classes("text-gray-500")
 
+                        with ui.row().classes(""):
+                            with ui.card().tight().classes("card-plus1") as card3:
+                                with ui.card_section():
+                                    with ui.row().classes("") as row:
+                                        ui.icon("done").classes(
+                                            "text-5xl bg-blue-500 text-white rounded-full mr-4"
+                                        )
 
+                                        with ui.column().classes(""):
+                                            ui.label("Aéronautique").classes(
+                                                " font-semibold text-black"
+                                            )
+                                            ui.label(
+                                                "C'est une passion qui me tient à coeur"
+                                            ).classes("text-gray-500")
+                            with ui.column().classes(""):
+                                with ui.card().tight().classes("card-plus1") as card4:
+                                    with ui.card_section():
+                                        with ui.row().classes("") as row:
+                                            ui.icon("done").classes(
+                                                "text-5xl bg-blue-500 text-white rounded-full mr-4"
+                                            )
 
+                                            with ui.column().classes(""):
+                                                ui.label("Informatique").classes(
+                                                    " font-semibold text-black"
+                                                )
+                                                ui.label(
+                                                    "Je veux en faire mon métier plus tard"
+                                                ).classes("text-gray-500")
 
+"""

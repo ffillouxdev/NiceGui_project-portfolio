@@ -5,11 +5,11 @@ from utils.recupData import init_db, close_db
 
 # homepage
 @ui.page("/")
-def index_page() -> None:
+async def index_page() -> None:
     with theme.frame("Homepage"):
-        home_page.content()
+        await home_page.content()
 
 
 all_pages.create()
 
-ui.run(title="Getting Started with NiceGUI", port=5000)
+ui.run(title="Getting Started with NiceGUI", port=3000)

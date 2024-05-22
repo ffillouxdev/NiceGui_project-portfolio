@@ -19,12 +19,10 @@ def dark_mode():
     if not is_enabled:
         is_enabled = True
         print(is_enabled)
-        background = ui.query("body").classes("bg-black")
 
     else:
         is_enabled = False
         print(is_enabled)
-        background = ui.query("body").classes("bg-gray-400")
 
 
 @contextmanager
@@ -41,7 +39,7 @@ def frame(navtitle: str):
         background = ui.query("body").classes("bg-black")
         foreground = ui.query("a").classes("text-white")
     else:
-        background = ui.query("body").classes("bg-gray-400")
+        background = ui.query("body").style("""margin: 0; padding: 0; width: 100%; background: url('static/parallax/montainsss.jpg') no-repeat center center fixed; background-size: cover""")
         foreground = ui.query("a").classes("text-white")
 
     dark = ui.dark_mode()
@@ -78,29 +76,30 @@ def frame(navtitle: str):
     with ui.header().classes(
         "flex justify-between items-center transparent no-shadow navbar"
     ) as tabs:
-        with ui.row().classes("flex justify-center items-center w-full"):
-            home = ui.link("Home", "/").classes(
-                "text-lg font-bold no-underline hover:underline"
-                + (" text-blue" if navtitle == "Homepage" else "")
-            )
-            about = ui.link("About", "/About/").classes(
-                "text-lg font-bold no-underline hover:underline"
-                + (" text-blue" if navtitle == "About" else "")
-            )
-            contact = ui.link("Contact", "/Contact").classes(
-                "text-lg font-bold no-underline hover:underline"
-                + (" text-blue" if navtitle == "Contact" else "")
-            )
-            dark_button1 = ui.button("Dark", on_click=dark_mode, color='blue')
-        with ui.row().classes("flex justify-center items-center w-full"):
-            separator1 = ui.separator().classes("w-1/3 bg-white navbar_hr")
+        with ui.row().classes("flex justify-between items-center w-full h-10"):
+            with ui.row().classes():
+                ui.label("FFillouxdev").classes("text-lg font-bold no-underline")
+                ui.separator().classes("w-3/4 mt-[-15px] ml-0.5 mr-0.5 bg-blue h-0.5")
+            with ui.row().classes("flex items-center"):
+                home = ui.link("Home", "/").classes(
+                    "text-lg font-bold no-underline hover:underline"
+                    + (" text-blue" if navtitle == "Homepage" else "")
+                )
+                contact = ui.link("Contact", "/Contact").classes(
+                    "text-lg font-bold no-underline hover:underline"
+                    + (" text-blue" if navtitle == "Contact" else "")
+                )
+                dark_button1 = ui.button("Dark", on_click=dark_mode, color="blue")
+    yield
 
-    # Create footer
+
+"""
+  # Create footer
     with ui.footer().classes(
-        "flex justify-center items-center w-full h-16 text-white fixed bottom-0"
+        "flex justify-center items-center w-full h-16 text-white fixed bottom-0 bg-blue"
     ) as footer:
         footerLabel = ui.label("© 2024 All rights reserved")
         logo = ui.image(source="assets/logo.jpg").classes("w-6 h-6")
         with ui.row().classes("flex justify-center items-center w-full"):
             separator2 = ui.separator().classes("w-1/3 bg-white")
-    yield
+"""

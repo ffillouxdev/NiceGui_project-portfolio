@@ -5,7 +5,7 @@ function animateSection1() {
 function animateSection5() {
     gsap.from('.el1', { opacity: 0, x: "-50%", duration: 1, ease: "power2.out" });
     gsap.from('.el2', { opacity: 0, x: "50%", duration: 1, ease: "power2.out"});
-    setNavbarBlack();
+    /*setNavbarBlack();*/
 }
 
 function animateSection3() {
@@ -78,7 +78,8 @@ document.addEventListener('DOMContentLoaded', function () {
             },
             onLeaveBack: () => {
                 animationsTriggered.section2 = false;
-                removeSetNavbarBlack();
+                /*removeSetNavbarBlack();*/
+                console.log('leave');
             }
         }
     });

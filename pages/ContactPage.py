@@ -1,20 +1,20 @@
 import theme
-from nicegui import ui
+from nicegui import ui, app
 from animationJs import slide_up
 
-def on_click(button_submit):
-    
+app.add_static_files("/Contact/static", "assets/")
+
+def on_click(button_submit):    
     ui.notify("Button clicked")
     button_submit.text = "Clicked"
     
 
     
 def contactPage():
-
     with theme.frame('Contact') as frame:
         ui.page_title('Contact Me')   
         ui.context.client.content.classes('p-0 gap-0')
-        slide_up('.animate_slideInUp')
+        slide_up('.animate_slideInUp')  
         with ui.row().classes(
         "flex justify-center items-center w-full h-2/3 animate_slideInUp gap-0"
         ):
